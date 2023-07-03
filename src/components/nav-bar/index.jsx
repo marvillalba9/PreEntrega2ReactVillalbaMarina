@@ -5,27 +5,25 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { ReactComponent as Logo } from './7.svg';
 import CustomizedBadges from '../cart-widget';
+import { Link } from 'react-router-dom';
 
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar className='navbar'>
-          <Logo />
+          <Logo to='/'/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Home
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Todos los productos
+          <Link to='/'>Todos los productos</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
-            Hombres
+          <Link to='/category/:id'>Hombres</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mujeres
+          <Link to='/category/:id'>Mujeres</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Contacto
+          <Link to='/contacto'>Contacto</Link>
           </Typography>
           <CustomizedBadges />
         </Toolbar>

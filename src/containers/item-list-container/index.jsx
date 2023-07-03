@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ItemCard from '../item-card'
+import ItemList from '../../components/item-list';
 
-const ItemList = () => {
+
+const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -12,16 +13,13 @@ const ItemList = () => {
 
   return (
     <div>
-      {productos.map((producto) => (
-        <ItemCard key={producto.id} producto={producto} />
-      ))}
+      <ItemList productos={productos}/>
     </div>
   );
 };
 
-export default ItemList;
+export default ItemListContainer;
 
-  
 
 
 
