@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ItemCounter from '../item-counter';
+import { Link } from 'react-router-dom';
 
 
 const ItemCard = ({ producto }) => {
@@ -31,7 +31,8 @@ const ItemCard = ({ producto }) => {
             $ {producto.price}
           </Typography>
         </CardContent>
-        <ItemCounter initial={1} stock={10} onAdd={(quantity) =>console.log('Cantidad agregada ', quantity)}/>
+        <hr></hr>
+          <Link className='button' to='/product/:id'>Ver Mas</Link>
       </CardActionArea>
     </Card>
   );

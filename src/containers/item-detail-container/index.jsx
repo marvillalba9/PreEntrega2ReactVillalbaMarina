@@ -1,29 +1,31 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemDetail from '../../components/item-detail';
+import { getProduct } from '../../helpers/productos';
 
-// import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { pedirItemPorId } from '../../helpers/pedir-item.js';
-// import ItemDetail from '../../components/item-detail';
+const ItemDetailContainer = () => {
 
-// const ItemDetailContainer = () => {
-//   const [item, setItem] = useState([]);
-//   const { id } = useParams();
+  const [producto, setProducto] = useState({});
+  const { id } = useParams();
 
-//   useEffect(() => {
-//     pedirItemPorId(id)
-//       .then((res) => setItem(res))
-//       .catch((error) => {
-//         console.error('Error al obtener el item:', error);
-//       });
-//   }, [id]);
+  useEffect(() => {
+    getProduct(id)
+      .then((res) => res.json()) 
+      .then((res) => setProducto(res))
+      .catch((error) => {
+        console.error('Error al obtener el item:', error);
+      });
+  }, [id]);
 
-//   return (
-//     <div>
-//       <ItemDetail item={item} />
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <ItemDetail producto={producto} />
+    </div>
+  );
+};
 
-// export default ItemDetailContainer;
+export default ItemDetailContainer;
+
 
 
 
