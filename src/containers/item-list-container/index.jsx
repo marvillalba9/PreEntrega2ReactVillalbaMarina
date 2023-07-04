@@ -34,20 +34,35 @@ const ItemListContainer = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    getProducts(searchCategory(category))
-    .then(res => res.json())
-    .then(res => {
-      const data = res.map((elemento) => ({
-        id: elemento.id,
-        title: elemento.title,
-        price: elemento.price,
-        image: elemento.image
-      }))
-      setItems(data);
-    })
-    .finally(() => setLoading(false))
-  }, [category])
-
+    if (category === 'all') {
+      getProducts('all')
+        .then((res) => res.json())
+        .then((res) => {
+          const data = res.map((elemento) => ({
+            id: elemento.id,
+            title: elemento.title,
+            price: elemento.price,
+            image: elemento.image
+          }));
+          setItems(data);
+        })
+        .finally(() => setLoading(false));
+    } else {
+      getProducts(searchCategory(category))
+        .then((res) => res.json())
+        .then((res) => {
+          const data = res.map((elemento) => ({
+            id: elemento.id,
+            title: elemento.title,
+            price: elemento.price,
+            image: elemento.image
+          }));
+          setItems(data);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [category]);
+  
 
   return (
     <div>
@@ -60,6 +75,8 @@ const ItemListContainer = () => {
 }
 
 export default ItemListContainer;
+
+
 
 
 
