@@ -8,7 +8,8 @@ import ItemCounter from '../item-counter';
 
 const ItemDetail = ({ producto }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <div style={cardStyle}>
+    <Card className='card-detail' sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -33,9 +34,17 @@ const ItemDetail = ({ producto }) => {
         <ItemCounter initial={1} stock={10} onAdd={(quantity) => console.log('Cantidad agregada ', quantity)} />
       </CardActionArea>
     </Card>
+    </div>
   );
 }
 
 export default ItemDetail;
+
+const cardStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingtop: '20px'
+};
 
 
