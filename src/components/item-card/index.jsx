@@ -1,9 +1,10 @@
+import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Link } from 'react-router-dom';
+import ItemCounter from '../item-counter';
 
 
 const ItemCard = ({ producto }) => {
@@ -21,11 +22,16 @@ const ItemCard = ({ producto }) => {
             {producto.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
+            {producto.category}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {producto.description}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
             $ {producto.price}
           </Typography>
-          <hr></hr>
-          <Link className='button' to='/item/${producto.id}'>Ver Mas</Link>
         </CardContent>
+        <ItemCounter initial={1} stock={10} onAdd={(quantity) =>console.log('Cantidad agregada ', quantity)}/>
       </CardActionArea>
     </Card>
   );

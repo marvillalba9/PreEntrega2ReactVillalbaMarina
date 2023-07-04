@@ -1,11 +1,26 @@
 import React from 'react';
-// import ItemList from '../../components/item-list';
 import { useParams, useNavigate } from 'react-router-dom';
 import TabMenu from '../../components/tabs';
+import { getProducts } from '../../helpers/productos';
+import ItemList from '../../components/item-list';
 
 const CATEGORIES = [{id:'all', title:'Todos los productos'}, {id: 'electro', title:'Electronics'}, {id:'jewelry', title:'Jewelry'}]
 
+const searchCategory = (id) => {
+  switch (id) {
+    case 'electro':
+      return 'electronics';
+    case 'jewelry':
+      return 'jewelery';
+    default:
+      return 'all'
+  }
+}
+
 const ItemListContainer = () => {
+  const [items, setItems] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
   const {category} = useParams ();
   const navigate = useNavigate();
 
@@ -17,29 +32,34 @@ const ItemListContainer = () => {
     }
   }, [category, navigate])
 
+  React.useEffect(() => {
+    setLoading(true);
+    getProducts(searchCategory(category))
+    .then(res => res.json())
+    .then(res => {
+      const data = res.map((elemento) => ({
+        id: elemento.id,
+        title: elemento.title,
+        price: elemento.price,
+        image: elemento.image
+      }))
+      setItems(data);
+    })
+    .finally(() => setLoading(false))
+  }, [category])
 
 
   return (
     <div>
       <TabMenu current={current} items={CATEGORIES} />
-
+      <div>
+        <ItemList  items={items} loading={loading} />
+      </div>
     </div>
   );
-};
+}
 
 export default ItemListContainer;
-
-
-//       <ItemList productos={productos}/>
-
-// const [productos, setProductos] = useState([]);
-
-// useEffect(() => {
-//   fetch("https://fakestoreapi.com/products")
-//     .then((res) => res.json())
-//     .then((json) => setProductos(json));
-// }, []);
-
 
 
 

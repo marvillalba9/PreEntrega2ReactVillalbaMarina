@@ -1,16 +1,18 @@
 import React from 'react'
 import ItemCard from '../item-card'
 
-const ItemList = ( {productos} ) => {
-
+const ItemList = ({ items, loading }) => {
   return (
     <div style={containerStyle}>
-    {productos.map((producto) => (
-    <ItemCard key={producto.id} producto={producto} />
-))}
-</div>
-  )
-}
+      {loading ? (
+        <p>cargando...</p>
+      ) : (
+        items.map((item) => <ItemCard key={item.id} producto={item} />)
+      )}
+    </div>
+  );
+};
+
 
 export default ItemList
 
