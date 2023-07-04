@@ -32,7 +32,7 @@ const ItemCard = ({ producto }) => {
           </Typography>
         </CardContent>
         <hr></hr>
-          <Link className='button' to='/product/:id'>Ver Mas</Link>
+          <Link className='button' to={`/product/${producto.id}`}>Ver Mas</Link>
       </CardActionArea>
     </Card>
   );
