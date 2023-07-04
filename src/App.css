@@ -1,6 +1,6 @@
 
 .navbar {
-  background-color: cadetblue;
+  background-color: palevioletred;
 }
 
 a {
@@ -14,7 +14,7 @@ a {
 }
 
 .button {
-  background-color: cadetblue;
+  background-color: palevioletred;
   border-radius: 15px;
   margin-top: 5px;
   padding: 10px;

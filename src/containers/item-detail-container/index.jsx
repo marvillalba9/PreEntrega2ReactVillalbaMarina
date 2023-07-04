@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { pedirItemPorId } from '../../helpers/pedir-item';
+import { pedirItemPorId } from '../../helpers/pedir-item.js';
 import ItemDetail from '../../components/item-detail';
 
 const ItemDetailContainer = () => {
@@ -23,6 +24,7 @@ const ItemDetailContainer = () => {
 };
 
 export default ItemDetailContainer;
+
 
 
 

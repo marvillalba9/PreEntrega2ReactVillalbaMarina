@@ -1,65 +1,25 @@
-// import React from 'react'
-// import ItemCard from '../item-card'
+import React from 'react'
+import ItemCard from '../item-card'
 
-// const ItemList = ( {productos} ) => {
+const ItemList = ( {productos} ) => {
 
-//   return (
-//     <div style={containerStyle}>
-//     {productos.map((producto) => (
-//     <ItemCard key={producto.id} producto={producto} />
-// ))}
-// </div>
-//   )
-// }
-
-// export default ItemList
-
-
-// const containerStyle = {
-//     display:'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     flexWrap: 'wrap',
-//     gap: '10px'
-//  }
-
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import ItemCounter from '../item-counter';
-
-
-const ItemDetail = ({ producto }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="250"
-          image={producto.image}
-          alt={producto.title}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {producto.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {producto.category}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {producto.description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            $ {producto.price}
-          </Typography>
-        </CardContent>
-        <ItemCounter initial={1} stock={10} onAdd={(quantity) =>console.log('Cantidad agregada ', quantity)}/>
-      </CardActionArea>
-    </Card>
-  );
+    <div style={containerStyle}>
+    {productos.map((producto) => (
+    <ItemCard key={producto.id} producto={producto} />
+))}
+</div>
+  )
 }
 
-export default ItemDetail;
+export default ItemList
+
+
+const containerStyle = {
+    display:'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: '10px'
+ }
+
