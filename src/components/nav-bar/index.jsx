@@ -12,7 +12,7 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar className='navbar'>
-          <Logo to='/'/>
+          <Link to='/'> <Logo /> </Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to='/'>Productos</Link>
           </Typography>
