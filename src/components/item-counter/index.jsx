@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 const ItemCounter = ({ stock, initial, onAdd }) => {
+
   const [quantity, setQuantity] = useState(initial);
 
   const increment = () => {
@@ -24,7 +25,7 @@ const ItemCounter = ({ stock, initial, onAdd }) => {
         <button className='button' onClick={increment}>+</button>
       </div>
       <div>
-        <button className='button' onClick={() => onAdd(quantity)} disabled={!stock}>
+        <button className='button agregar-al-carrito' onClick={() => onAdd(quantity)} disabled={!stock}>
           Agregar al carrito
         </button>
       </div>
@@ -33,6 +34,8 @@ const ItemCounter = ({ stock, initial, onAdd }) => {
 };
 
 export default ItemCounter;
+
+
 
 
 

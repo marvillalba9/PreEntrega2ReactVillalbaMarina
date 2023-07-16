@@ -6,7 +6,9 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import ItemCounter from '../item-counter';
 
+
 const ItemDetail = ({ producto }) => {
+ 
   return (
     <div style={cardStyle}>
     <Card className='card-detail' sx={{ maxWidth: 345 }}>
