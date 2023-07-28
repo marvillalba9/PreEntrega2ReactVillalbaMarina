@@ -5,10 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import ItemCounter from '../item-counter';
-
+import { CartContext } from '../../context';
+import { useContext } from 'react';
 
 const ItemDetail = ({ producto }) => {
- 
+  
+  const { carrito, setCarrito } = useContext (CartContext);
+  console.log (carrito);
+  
   return (
     <div style={cardStyle}>
     <Card className='card-detail' sx={{ maxWidth: 345 }}>

@@ -5,10 +5,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from '../../containers/item-detail-container';
 import Contacto from '../contacto';
 import { CartContext } from '../../context';
+import { useState } from 'react';
+import CartContentContainer from '../../containers/cart-content-container';
 
 const Main = () => {
-  
-  const [carrito, setCarrito] = useState ([]);
+    const [carrito, setCarrito] = useState ([]);
   
   return (
     <CartContext.Provider value={ {carrito, setCarrito} }>
@@ -20,7 +21,7 @@ const Main = () => {
           <Route path='/' element={<ItemListContainer />} />
           <Route path='/products/:category' element={<ItemListContainer />} />
           <Route path='/product/:id' element={<ItemDetailContainer />} />
-          <Route path='/cart' element={<p>cart</p>} />
+          <Route path='/cart' element={<CartContentContainer />} />
           <Route path='/contacto' element={<Contacto />} />
 
         </Routes>
