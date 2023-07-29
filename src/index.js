@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY || '',
+  authDomain: "reactjs-villalba.firebaseapp.com",
+  projectId: "reactjs-villalba",
+  storageBucket: "reactjs-villalba.appspot.com",
+  messagingSenderId: "365327765552",
+  appId: "1:365327765552:web:65193d81f5110be9741df5",
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID || '',
+};
+
+initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

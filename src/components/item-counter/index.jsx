@@ -1,52 +1,73 @@
 import React from 'react';
-import { useState, useContext } from 'react';
-import { CartContext } from '../../context/index';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
-const ItemCounter = ({ stock, initial, onAdd, producto }) => {
-  const [quantity, setQuantity] = useState(initial);
-  const { carrito, setCarrito } = useContext(CartContext);
 
-  const increment = () => {
-    if (quantity < stock) {
-      setQuantity(quantity + 1);
+const ItemCounter = ({ stock, addToCarrito }) => {
+  const [counter, setCounter] = React.useState(1);
+  const [clicked, setClicked] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  const handleAdd = () => {
+    if (counter < stock) {
+      setCounter(counter + 1);
     }
-  };
+  }
 
-  const decrement = () => {
-    if (quantity > initial) {
-      setQuantity(quantity - 1);
+  const handleSubstract = () => {
+    if (counter <= 1) {
+      return;
     }
-  };
+    setCounter(counter - 1);
+  }
 
-  const handleAddToCart = () => {
-    const addItem = { ...producto, quantity };
-    setCarrito([...carrito, addItem]); 
-    onAdd(addItem);
-  };
+  const handleCarrito = () => {
+    addToCarrito(counter);
+    setCounter(1);
+    setClicked(true);
+  }
+
+  const handleNavigateCart = () => {
+    return navigate('/cart');
+  }
+
+  // const increment = () => {
+  //   if (quantity < stock) {
+  //     setQuantity(quantity + 1);
+  //   }
+  // };
+
+  // const decrement = () => {
+  //   if (quantity > initial) {
+  //     setQuantity(quantity - 1);
+  //   }
+  // };
+
+  // const handleAddToCart = () => {
+  //   const addItem = { ...producto, quantity };
+  //   setCarrito([...carrito, addItem]); 
+  //   onAdd(addItem);
+  // };
 
   return (
-    <div className='counter'>
-      <div className='controls'>
-        <button className='button' onClick={decrement}>
-          -
-        </button>
-        <h4 className='number'>{quantity}</h4>
-        <button className='button' onClick={increment}>
-          +
-        </button>
+    <div>
+      {
+        clicked ?
+        <Button onClick={handleNavigateCart}>Finalizar compra</Button>
+        :
+        <>
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
+        <Button onClick={handleSubstract}>-</Button>
+        <p>{counter}</p>
+        <Button onClick={handleAdd}>+</Button>
       </div>
-      <div>
-        <button
-          className='button agregar-al-carrito'
-          onClick={handleAddToCart}
-          disabled={!stock}
-        >
-          Agregar al carrito
-        </button>
-      </div>
+      <Button onClick={handleCarrito} size="small">Agregar al carrito</Button>
+      </>
+      }
     </div>
-  );
-};
+  )
+}
 
 export default ItemCounter;
 

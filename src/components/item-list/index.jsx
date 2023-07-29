@@ -4,18 +4,17 @@ import ItemCard from '../item-card'
 const ItemList = ({ items, loading }) => {
   return (
     <div style={containerStyle}>
-      {loading ? (
-        <p>cargando...</p>
-      ) : (
-        items.map((item) => <ItemCard key={item.id} producto={item} />)
-      )}
+        {
+            Boolean(loading)        ?
+                <p>cargando...</p>
+            :
+                items.map((item, index) => <ItemCard key={item.title + index} data={item}  />)
+        }
     </div>
-  );
-};
-
+  )
+}
 
 export default ItemList
-
 
 const containerStyle = {
     display:'flex',
@@ -23,5 +22,4 @@ const containerStyle = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     gap: '10px'
- }
-
+}

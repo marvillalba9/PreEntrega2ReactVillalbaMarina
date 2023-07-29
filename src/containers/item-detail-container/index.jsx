@@ -1,31 +1,44 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../../components/item-detail';
-import { getProduct } from '../../helpers/productos';
+//import { getProduct } from '../../helpers/productos';
 import { CartContext } from '../../context/index';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
-const ItemDetailContainer = () => {
-  const [producto, setProducto] = useState({});
+
+const ItemDetailContainer = ({image, title, description, price}) => {
+  const [data, setData] = useState();
   const { id } = useParams();
-  const { carrito, setCarrito } = useContext(CartContext); 
+  
+  const { addProductToCarrito } = useContext(CartContext); 
 
-  useEffect(() => {
-    getProduct(id)
-      .then((res) => res.json())
-      .then((res) => setProducto(res))
-      .catch((error) => {
-        console.error('Error al obtener el item:', error);
-      });
-  }, [id]);
+  React.useEffect(() => {
+    const db = getFirestore();
+    const getProduct = doc(db, 'productos', id);
+
+    getDoc(getProduct)
+    .then((snapshot) => {
+      setData({id: snapshot.id, ...snapshot.data()})
+    })
+  }, [id])
 
   return (
     <div>
-      <ItemDetail producto={producto} />
+      <ItemDetail data={data} addToCarrito={addProductToCarrito} />
     </div>
   );
-};
+}
+
 
 export default ItemDetailContainer;
+
+
+
+
+
+
+
+
 
 
 
