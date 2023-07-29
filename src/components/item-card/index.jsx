@@ -10,6 +10,8 @@ import ItemCounter from '../item-counter';
 
 
 const ItemCard = ({ data }) => {
+console.log('ItemCard data:', data);
+
   const {id, title, imageURL, stock, price, description} = data;
 
   const { addProductToCarrito } = React.useContext(CartContext);

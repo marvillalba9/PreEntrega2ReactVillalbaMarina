@@ -6,7 +6,7 @@ import { CartContext } from '../../context/index';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 
-const ItemDetailContainer = ({image, title, description, price}) => {
+const ItemDetailContainer = () => {
   const [data, setData] = useState();
   const { id } = useParams();
   

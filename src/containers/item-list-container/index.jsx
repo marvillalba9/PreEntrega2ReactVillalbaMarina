@@ -14,7 +14,7 @@ const CATEGORIES = [
 
 const ItemListContainer = () => {
   const [items, setItems] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   const { category } = useParams ();
   const navigate = useNavigate();
