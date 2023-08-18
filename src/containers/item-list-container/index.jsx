@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import TabMenu from '../../components/tabs';
-//import { getProducts } from '../../helpers/productos';
 import ItemList from '../../components/item-list';
 import { getFirestore, collection, getDocs, where, query } from 'firebase/firestore';
 

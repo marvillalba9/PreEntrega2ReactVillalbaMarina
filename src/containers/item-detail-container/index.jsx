@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../../components/item-detail';
-//import { getProduct } from '../../helpers/productos';
 import { CartContext } from '../../context/index';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-
 
 const ItemDetailContainer = () => {
   const [data, setData] = useState();
@@ -18,7 +16,7 @@ const ItemDetailContainer = () => {
 
     getDoc(getProduct)
     .then((snapshot) => {
-      setData({id: snapshot.id, ...snapshot.data()})
+      setData({id: snapshot.id, ...snapshot.data()});
     })
   }, [id])
 
@@ -29,9 +27,7 @@ const ItemDetailContainer = () => {
   );
 }
 
-
 export default ItemDetailContainer;
-
 
 
 

@@ -32,24 +32,6 @@ const ItemCounter = ({ stock, addToCarrito }) => {
     return navigate('/cart');
   }
 
-  // const increment = () => {
-  //   if (quantity < stock) {
-  //     setQuantity(quantity + 1);
-  //   }
-  // };
-
-  // const decrement = () => {
-  //   if (quantity > initial) {
-  //     setQuantity(quantity - 1);
-  //   }
-  // };
-
-  // const handleAddToCart = () => {
-  //   const addItem = { ...producto, quantity };
-  //   setCarrito([...carrito, addItem]); 
-  //   onAdd(addItem);
-  // };
-
   return (
     <div>
       {

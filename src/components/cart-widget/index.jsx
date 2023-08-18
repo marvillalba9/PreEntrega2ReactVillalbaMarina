@@ -3,8 +3,6 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import { useContext } from 'react';
-// import { CartContext } from '../../context/index';
 import { Link } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -17,10 +15,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Cart = ({ cartQuantity }) => {
-  // const { carrito } = useContext(CartContext);
-
-  //  const totalProductos = carrito.reduce((total, producto) => total + producto.quantity, 0);
-
   return (
     <Link to="/cart">
       <IconButton aria-label="cart">
