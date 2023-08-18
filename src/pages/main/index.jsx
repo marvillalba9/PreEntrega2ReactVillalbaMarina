@@ -4,15 +4,13 @@ import ItemListContainer from '../../containers/item-list-container';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from '../../containers/item-detail-container';
 import Contacto from '../contacto';
-import { useState } from 'react';
 import CartContentContainer from '../../containers/cart-content-container';
 import { ContextProvider } from '../../context/index';
 
 const Main = () => {
-    const [carrito, setCarrito] = useState ([]);
-  
+    
   return (
-    <ContextProvider value={ {carrito, setCarrito} }>
+    <ContextProvider>
       <BrowserRouter>
         
         <NavBar />

@@ -13,6 +13,12 @@ export const ContextProvider = ({ children }) => {
     setCarrito([...carrito, product]);
   }
 
+  const removeProductFromCarrito = (index) => {
+    const updatedCarrito = [...carrito];
+    updatedCarrito.splice(index, 1);
+    setCarrito(updatedCarrito);
+  }
+
   const createNewOrder = (order) => {
     const db = getFirestore();
     const orders = collection(db, 'orders');
@@ -36,7 +42,7 @@ export const ContextProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ carrito, addProductToCarrito, quantityCart: carrito.length, createNewOrder, lastOrder: orderId }}>
+    <CartContext.Provider value={{ carrito, addProductToCarrito, quantityCart: carrito.length, createNewOrder, lastOrder: orderId, removeProductFromCarrito }}>
       {children}
     </CartContext.Provider>
   );

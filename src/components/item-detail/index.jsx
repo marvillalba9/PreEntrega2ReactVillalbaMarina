@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ItemCounter from '../item-counter';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { CartContext } from '../../context';
 
-const ItemDetail = ({ data, addToCarrito }) => {
+const ItemDetail = ({ data }) => {
+
+  const {addProductToCarrito } = useContext (CartContext);
+  const addToCarrito = (quantity) => {
+    addProductToCarrito({...data, quantity})
+  }
+
   return (
     <Card sx={{ maxWidth: 400, margin: '0 auto', marginTop: 5 }}>
       <CardMedia component="img" height="500" image={data?.imageURL} alt={data?.title} />
@@ -17,7 +24,7 @@ const ItemDetail = ({ data, addToCarrito }) => {
           {data?.description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Price: ${data?.price}
+          Precio: ${data?.price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Stock: {data?.stock}

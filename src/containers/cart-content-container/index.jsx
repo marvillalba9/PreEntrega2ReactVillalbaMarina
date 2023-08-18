@@ -2,11 +2,12 @@ import React from 'react';
 import { CartContext } from '../../context/index';
 import UserInfo from '../../components/user-info';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const CartContentContainer = () => {
-  const { carrito, createNewOrder, lastOrder } = React.useContext(CartContext);
+  const { carrito, createNewOrder, lastOrder, removeProductFromCarrito } = React.useContext(CartContext);
   console.log(carrito);
 
   return (
@@ -28,7 +29,14 @@ const CartContentContainer = () => {
               <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', alignItems: 'center'}}>
                 <img src={producto.imageURL} alt={producto.title} style={{ width: 40}} />
                 <h2>{producto.title}</h2>
-                <h3>{`$${producto.pricePerUnit * producto.quantity} ($${producto.pricePerUnit} x ${producto.quantity})`}</h3>
+                <h3>{`$${producto.price * producto.quantity} ($${producto.price} x ${producto.quantity})`}</h3>
+                <IconButton
+                    onClick={() => removeProductFromCarrito(index)}
+                    aria-label="Eliminar"
+                    color="secondary"
+                  >
+                    <DeleteIcon />
+                </IconButton>
               </div>
             </li>
           ))

@@ -33,13 +33,15 @@ const UserInfo = ({ carrito, createNewOrder}) => {
   console.log(isFormValid());
   return (
     <div>
-      <h3>User Info</h3>
+      <h3>Por favor complete sus datos</h3>
+      <hr></hr>
       <div style={{ display: 'flex', justifyContent:'center', gap: 30 }}>
         <input type="text" placeholder="Nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
         <input type="text" placeholder="Apellido" value={apellido} onChange={(event) => setApellido(event.target.value)}  />
         <input type="text" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)}  />
         <input type="text" placeholder="Teléfono" value={telefono} onChange={(event) => setTelefono(event.target.value)}  />
       </div>
+      <hr></hr>
       <div>
         <button onClick={handleSubmit} disabled={!isFormValid()}>Finalizar compra</button>
       </div>

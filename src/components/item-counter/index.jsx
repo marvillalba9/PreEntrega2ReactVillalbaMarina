@@ -2,11 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-
 const ItemCounter = ({ stock, addToCarrito }) => {
   const [counter, setCounter] = React.useState(1);
   const [clicked, setClicked] = React.useState(false);
-
   const navigate = useNavigate();
 
   const handleAdd = () => {
@@ -32,27 +30,32 @@ const ItemCounter = ({ stock, addToCarrito }) => {
     return navigate('/cart');
   }
 
+  const handleNavigateHome = () => {
+    navigate('/');
+  }
+
   return (
     <div>
-      {
-        clicked ?
-        <Button onClick={handleNavigateCart}>Finalizar compra</Button>
-        :
-        <>
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
-        <Button onClick={handleSubstract}>-</Button>
-        <p>{counter}</p>
-        <Button onClick={handleAdd}>+</Button>
-      </div>
-      <Button onClick={handleCarrito} size="small">Agregar al carrito</Button>
-      </>
-      }
+      {clicked ? (
+        <div>
+          <Button onClick={handleNavigateCart}>Finalizar compra</Button>
+          <Button onClick={handleNavigateHome}>Seguir comprando</Button>
+        </div>
+      ) : (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
+            <Button onClick={handleSubstract}>-</Button>
+            <p>{counter}</p>
+            <Button onClick={handleAdd}>+</Button>
+          </div>
+          <Button onClick={handleCarrito} size="small">Agregar al carrito</Button>
+        </div>
+      )}
     </div>
   )
 }
 
 export default ItemCounter;
-
 
 
 
