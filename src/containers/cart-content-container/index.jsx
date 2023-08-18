@@ -2,7 +2,6 @@ import React from 'react';
 import { CartContext } from '../../context';
 import UserInfo from '../../components/user-info';
 import { Link } from 'react-router-dom';
-import Cart from '../../components/cart-widget';
 
 
 const CartContentContainer = () => {
@@ -12,7 +11,6 @@ const CartContentContainer = () => {
   return (
     <div>
       <h1>Cart</h1>
-      <Cart cartquantity={quantityCart} />
      { 
      !carrito.length ?
      <>
