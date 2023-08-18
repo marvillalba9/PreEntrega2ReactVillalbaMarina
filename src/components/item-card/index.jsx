@@ -4,27 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { CartContext } from '../../context/index';
-import ItemCounter from '../item-counter';
 import { Link } from 'react-router-dom';
 
 const ItemCard = ({ data }) => {
-console.log('ItemCard data:', data);
 
-  const {id, title, imageURL, stock, price, description} = data;
+  const {id, title, imageURL, stock, price} = data;
 
-  const { addToCarrito } = React.useContext(CartContext);
 
-  const addProductToCarrito = (quantity) => {
-    addToCarrito({
-      id: id,
-      title: title,
-      pricePerUnit: price,
-      quantity: quantity,
-      imageURL: imageURL,
-      description: description
-   })
-  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -46,8 +32,6 @@ console.log('ItemCard data:', data);
           <hr></hr>
           <Link className='button' to={`/product/${id}`}>Ver Mas</Link>
         </CardContent>
-        <hr></hr>
-          <ItemCounter stock={stock} addToCarrito={addProductToCarrito} />
       </CardActionArea>
     </Card>
   );

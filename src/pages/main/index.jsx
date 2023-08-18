@@ -4,15 +4,15 @@ import ItemListContainer from '../../containers/item-list-container';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from '../../containers/item-detail-container';
 import Contacto from '../contacto';
-import { CartContext } from '../../context';
 import { useState } from 'react';
 import CartContentContainer from '../../containers/cart-content-container';
+import { ContextProvider } from '../../context/index';
 
 const Main = () => {
     const [carrito, setCarrito] = useState ([]);
   
   return (
-    <CartContext.Provider value={ {carrito, setCarrito} }>
+    <ContextProvider value={ {carrito, setCarrito} }>
       <BrowserRouter>
         
         <NavBar />
@@ -27,7 +27,7 @@ const Main = () => {
         </Routes>
 
       </BrowserRouter>
-    </CartContext.Provider>
+    </ContextProvider>
   );
 };
 

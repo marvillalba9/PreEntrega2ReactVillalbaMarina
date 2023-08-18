@@ -1,9 +1,8 @@
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react'; // Importa useState
 import { addDoc, collection, doc, getFirestore, updateDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
 export const CartContext = createContext();
-const { Provider } = CartContext;
 
 export const ContextProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
@@ -37,8 +36,9 @@ export const ContextProvider = ({ children }) => {
   }
 
   return (
-    <Provider value={{ carrito, addProductToCarrito, quantityCart: carrito.length, createNewOrder, lastOrder: orderId }}>
+    <CartContext.Provider value={{ carrito, addProductToCarrito, quantityCart: carrito.length, createNewOrder, lastOrder: orderId }}>
       {children}
-    </Provider>
+    </CartContext.Provider>
   );
 };
+
