@@ -4,10 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { CartContext } from '../../context';
 import ItemCounter from '../item-counter';
-
+import { Link } from 'react-router-dom';
 
 const ItemCard = ({ data }) => {
 console.log('ItemCard data:', data);
@@ -37,15 +36,15 @@ console.log('ItemCard data:', data);
           alt={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            <Link to={'/product/' + id}>{title}</Link>
-          </Typography>
+          <Typography gutterBottom variant="h5" component="div"> {title} </Typography>
           <Typography variant="body2" color="text.secondary">
             $ {price}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Stock:{stock}
           </Typography>
+          <hr></hr>
+          <Link className='button' to={`/product/${id}`}>Ver Mas</Link>
         </CardContent>
         <hr></hr>
           <ItemCounter stock={stock} addToCarrito={addToCarrito} />
@@ -56,4 +55,5 @@ console.log('ItemCard data:', data);
 
 export default ItemCard;
 
-//<Link className='button' to={`/product/${id}`}>Ver Mas</Link>
+
+
